@@ -1,0 +1,16 @@
+---
+- name: Install nginx
+  hosts: managed-node
+  become: yes
+
+  tasks:
+  - name: Install nginx package
+    ansible.builtin.dnf:
+      name: nginx
+      state: latest
+
+  - name: Start nginx
+    ansible.builtin.service:
+      name: nginx
+      state: started
+      enabled: yes
